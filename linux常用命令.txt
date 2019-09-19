@@ -1,0 +1,80 @@
+1.Tab补全命令
+2.su - 切换到root用户运行，sudo使用管理员权限
+3.命令+& 后台运行命令
+4.管理后台作业 jobs查找 bg转后台 fg转前台
+5.文件系统根目录为/，路径使用/
+6.pwd显示当前工作目录
+7.以.开头的文件是隐藏文件
+8.touch 文件名 创建或更新已存在的文件
+9.ls 显示目录中的文件 
+10.file 文件 显示文件类型
+11.cd切目录 ..上一个目录 .当前目录 ～家目录
+12.cp source target 复制文件
+13.mv 移动/重命名文件
+14.rm 删除文件
+15.mkdir 创建目录
+16.rmdir 删除空目录
+17.文件系统
+	1.bin:可执行文件，命令
+	2.boot:引导目录
+	3.dev:计算机硬件设备
+	4.etc:配置文件
+	5.home:用户的私有数据
+	6.lib:程序进行的库文件
+	7.mnt:存储设备挂载
+	8.opt:大型软件
+	9.proc:系统的实时信息
+	10.root
+	11.sbin:root用户可执行命令
+	12.sys:底层信息
+	13.tmp:临时目录
+	14.var:经常变化的信息，服务器
+18.cal 查看日历
+19.uptime 查看系统运行时间
+20.echo 输出
+21.cat 显示文件内容 
+cat>file 创建 
+cat file1,file2>file 合并 
+cat file1>>file2 追加 
+22.head tail 显示文件头10行，末尾10行
+23.less 翻页显示文件内容
+24.shutdown,poweroff,reboot 关机、重启
+25.zip unzip(解压缩) tar
+26.find 查找位置 查找参数 查找文件
+27.fdisk 磁盘管理
+28.mount 挂载和使用文件系统
+29.命令 -h  man/info+命令 帮助
+30.用户(唯一userid)属于一个主组(唯一groupid)
+31.useradd passwd userdel usermod 用户相关，组同理
+32.UGO模型 每个文件都有一个用户和组对应UG；不属于用户与组的文件对应O  drwxr-xr--
+33.chown chgrp 修改文件所属用户、组
+34.chmod go+rw linuxcast.net chmod 660 linuxcast.net r:4,w:2,x:1
+35.umask 权限码的反码
+36.ifconfig -a 显示所有网口
+37.ifup eth0 ifdown eth0 打开/关闭网口
+38.网络配置文件
+网卡配置 /etc/sysconfig/network-scripts/ifcfg-etho
+DNS配置 /etc/resolv.conf
+主机名配置 /etc/sysconfig/network
+39.nmap 测试同一网段的ip
+40.host/dig 测试dns
+41.ip route 测试路由表
+42.traceroute 追踪路径
+43.mtr 网络质量测试
+44.命令行shell的数据流：stdin 输入 0 键盘
+stdout 输出 1 终端
+stderr 错误 2 终端
+45.重定向 >将stdout重定向到文件，覆盖
+>>将stdout重定向到文件 追加
+2>将stderr重定向到文件 覆盖
+2>&1 将stderr与stdout保存在一起
+< 重定向标准输入 grep linuxcast < /etc/passwd
+46.grep 查找文件中满足要求的字符串 grep test file* 查找file前缀的文件中的test字符串
+grep -r update /etc/acpi 递归查找
+grep -v test *test* 反向查找，查找不包括的行
+47.cut命令用于显示每行从开头算起num1到num2的文字 who | cut -b 3
+48.wc统计文本信息 -l行数 -w只统计单词数 
+49.sort对文本进行排序
+50.tr对标准输入进行删除、替换 echo "hello world" | tr 'a-z' 'A-Z'
+51.sed搜索并替换 sed 's/linux/unix/g' linuxcast #unix替换linux
+52.rpm、yum软件包管理
