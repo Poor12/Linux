@@ -1,0 +1,182 @@
+1.运行shell脚本的方式：
+1.chmod +x xxx.sh ./xxx.sh
+脚本中第一行 #!/bin/bash是指定脚本解释器
+2.直接运行解释器，参数是脚本文件名
+/bin/sh test.sh
+
+2.shell变量，定义变量不加美元符号
+使用变量，即在变量前加美元符号，括号可选，主要是为了帮助解释器识别变量的边界
+for skill in Ada Coffe Action Java; do
+	echo "I am good at ${skill}Script"
+done
+
+3.只读变量
+myUrl="xxx"
+readonly myUrl
+myUrl="xxxx"	#无法生效
+
+4.删除unset：unset v_name
+
+5.shell字符串
+1.单引号：
+（1）单引号里的任何字符串都会原样输出，字符串中的变量是无效的
+（2）单引号不能出现单独一个引号，但可成对出现
+2.双引号
+（1）可以有变量
+（2）可以出现转义字符
+3.拼接字符串
+（1）使用双引号拼接
+your_name="runoob"
+greeting="hello,"$your_name" !"
+greeting_1="hello,${your_name} !"
+（2）使用单引号拼接
+greeting_2='hello,'${your_name}' !'
+greeting_3='hello,${your_name} !'	//变量不生效
+4.获取字符串长度
+string="abcd"
+echo ${#string}
+5.提取子字符串
+echo ${string:1:4}
+
+6.数组：bash支持一维数组，并且没有限定大小
+#!/bin/bash
+array_name=(value0 value1 value2)
+array_name[2]=value3
+echo ${array_name[2]}
+echo ${array_name[@]} #获取所有数组元素
+echo ${#array_name[@]}
+echo ${#array_name[0]}
+
+7.多行注释
+:<<EOF
+...
+EOF
+
+8.传递参数
+$0：传递的文件名
+$1：传递的第一个参数
+$#：传递的参数个数
+$*、$@：以一个单字符串显示所有向脚本传递的参数,双引号有不同
+$$：脚本运行的当前进程ID
+$!：后台运行的最后一个进程ID
+$-：显示shell使用的当前选项
+
+9.shell运算符：
+1.算术运算符
+2.关系运算符，-eq，-ne，-gt，-lt，-ge，-le
+3.布尔运算符，！[!false]，-o或运算 [$a -lt 20 -o $b -gt 100]，-a与运算
+4.逻辑运算符 && ||
+5.字符串运算符 = != 
+[-z $a] [-n "$a"] [$a]:判空
+6.文件测试运算符
+[-d file] 检测文件是否有目录
+10.echo
+11.read name:从标准输入读取变量
+12.printf
+13.test
+
+14.if语句
+if [condition1]
+then
+ command1
+elif condition2
+then
+ command2
+fi
+
+15.for循环
+for var in a,b,c #for((i=a;i<b;++i))
+do
+ commands
+done
+
+for((assignment;condition;next));do
+ command;
+done;
+16.while循环
+while ((condition))
+do
+ command
+done
+
+while :
+do
+ echo "死循环"
+done
+
+17.until
+until [condition]
+do
+ command
+done
+
+18.case
+case value in
+模式1）
+ command1
+ ;;
+模式2)
+ command2
+ ;;
+esac
+
+19.break
+#!/bin/bash
+while :
+do
+    echo -n "输入 1 到 5 之间的数字:"
+    read aNum
+    case $aNum in
+        1|2|3|4|5) echo "你输入的数字为 $aNum!"
+        ;;
+        *) echo "你输入的数字不是 1 到 5 之间的! 游戏结束"
+            break
+        ;;
+    esac
+done
+
+20.continue
+
+21.定义函数
+funWithReturn(){
+    echo "这个函数会对输入的两个数字进行相加运算..."
+    echo "输入第一个数字: "
+    read aNum
+    echo "输入第二个数字: "
+    read anotherNum
+    echo "两个数字分别为 $aNum 和 $anotherNum !"
+    return $(($aNum+$anotherNum))
+}
+funWithReturn
+
+funWithParam(){
+    echo "第一个参数为 $1 !"
+    echo "第二个参数为 $2 !"
+    echo "第十个参数为 $10 !"
+    echo "第十个参数为 ${10} !"
+    echo "第十一个参数为 ${11} !"
+    echo "参数总数有 $# 个!"
+    echo "作为一个字符串输出所有参数 $* !"
+}
+funWithParam 1 2 3 4 5 6 7 8 9 34 73
+
+22.文件包含
+. ./test1.sh #.号引用文件
+source ./test1.sh
+
+23.输入/输出重定向
+1.command1 > file 输出重定向
+2.command2 < file 输入重定向
+3.command3 >> file 输出追加重定向到文件
+4.n> file 将文件描述符为n的文件重定向到file  #n>> file
+5.n>&m (n<&m) 输入输出文件合并
+6.文件描述符 0stdin 1stdout 2stderr
+
+
+
+
+
+
+
+
+ 
