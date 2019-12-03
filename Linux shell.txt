@@ -24,6 +24,7 @@ myUrl="xxxx"	#无法生效
 2.双引号
 （1）可以有变量
 （2）可以出现转义字符
+（3）${xxx-xxxx}即xxxx，为xxx的默认值
 3.拼接字符串
 （1）使用双引号拼接
 your_name="runoob"
